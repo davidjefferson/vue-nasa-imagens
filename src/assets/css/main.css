@@ -1,0 +1,59 @@
+@import './base.css';
+
+#app {
+  margin: 0 auto;
+  font-weight: normal;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--primary);
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+.btn-primary {
+  padding: 10px 25px;
+  border-radius: 25px;
+  border: 0;
+  background: var(--primary);
+  color: var(--vt-c-white);
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  opacity: 0.8;
+}
+
+.card {
+  box-shadow: 0px 0px 6px 0px #0c0c0c;
+  padding: 18px 25px 25px 25px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+@media (min-width: 1024px) {
+  main {
+    min-height: 85vh;
+    padding-top: 50px !important;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 1024px) {
+  main {
+    padding-top: 30px !important;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+}
