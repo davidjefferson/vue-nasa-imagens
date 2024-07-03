@@ -98,5 +98,10 @@ p {
   .content-button {
     text-align: center;
   }
+
+  iframe,
+  figure {
+    margin-right: 0;
+  }
 }
 </style>

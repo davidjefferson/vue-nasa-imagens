@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <div class="container">
+    <div class="container container-footer">
       <div>Version: {{ version }}</div>
       <div>Api Utilizada: <a href="https://api.nasa.gov">Nasa APIs</a></div>
     </div>
@@ -25,7 +25,8 @@ footer {
   background: rgba(255, 255, 255, 0.05);
 }
 
-.container {
-  text-align: center;
+.container-footer {
+  display: flex;
+  justify-content: space-between;
 }
 </style>

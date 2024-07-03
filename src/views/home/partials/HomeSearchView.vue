@@ -1,3 +1,36 @@
+<template>
+  <div>
+    <h2>Galeria de Imagens</h2>
+    <div class="paginator-details">
+      Mostrando de {{ formatDate(startDate, 'dd/MM/yyyy') }} até {{ formatDate(endDate, 'dd/MM/yyyy') }}
+    </div>
+
+    <div class="grid-itens">
+      <div v-if="images.length">
+        <ul>
+          <li v-for="image in images" :key="image.id">
+            <HomeSearchItemView :image="image" />
+          </li>
+        </ul>
+      </div>
+
+      <NotFound v-if="notFound" />
+    </div>
+
+    <div class="paginator">
+      <a @click="prev">
+        <img src="./../../../assets/svg/arrow.svg" alt="Semana Anterior">
+        Semana Anterior
+      </a>
+      <a @click="next">
+        Próxima Semana
+        <img src="./../../../assets/svg/arrow.svg" alt="Semana Anterior">
+      </a>
+    </div>
+  </div>
+
+</template>
+
 <script>
 import ImageService from '@/_shared/services/ImageService';
 import HomeSearchItemView from './HomeSearchItemView.vue';
@@ -12,6 +45,7 @@ export default {
   data() {
     return {
       images: [],
+      notFound: false,
       startDate: new Date(),
       endDate: new Date(),
     };
@@ -32,6 +66,8 @@ export default {
         })
         .catch((error) => {
           this.images = [];
+        }).finally(() => {
+          this.notFound = this.images.length <= 0;
         });
     },
     next() {
@@ -48,42 +84,6 @@ export default {
   },
 };
 </script>
-
-
-<template>
-
-  <div>
-    <h2>Galeria de Imagens</h2>
-    <div class="paginator-details">
-      Mostrando de {{ formatDate(startDate, 'dd/MM/yyyy') }} até {{ formatDate(endDate, 'dd/MM/yyyy') }}
-    </div>
-
-    <div class="grid-itens">
-      <div v-if="images.length">
-        <ul>
-          <li v-for="image in images" :key="image.id">
-            <HomeSearchItemView :image="image" />
-          </li>
-        </ul>
-      </div>
-
-      <NotFound v-if="images.length === 0 && !isLoading" />
-    </div>
-
-    <div class="paginator">
-      <a @click="prev">
-        <img src="./../../../assets/svg/arrow.svg" alt="Semana Anterior">
-        Semana Anterior
-      </a>
-      <a @click="next">
-        Próxima Semana
-        <img src="./../../../assets/svg/arrow.svg" alt="Semana Anterior">
-      </a>
-    </div>
-  </div>
-
-</template>
-
 
 <style scoped>
 .grid-itens {
